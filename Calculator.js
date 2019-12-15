@@ -4,25 +4,23 @@ const TableHeader = () => {
     return (
         <thead>
             <tr>
-                <th>Company</th>
-                <th>Payment Date</th>
-                <th>Amount</th>
+                <th>Amount owed ($)</th>
                 <th>Payer</th>
-                <th>Remove</th>
+                
             </tr>
         </thead>
     );
 }
 
+
 const TableBody = props => { 
+    
     const rows = props.characterData.map((row, index) => {
         return (
+            
             <tr key={index}>
-                <td>{row.company}</td>
-                <td>{row.paydate}</td>
                 <td>{row.amount}</td>
-                <td>{row.payer}</td>
-                <td><button onClick={() => { if (window.confirm('Are you sure you wish to delete this bill?')) (props.removeCharacter(index)) } }>Delete</button></td>
+                <td>{row.payer}</td>               
             </tr>
         );
     });
@@ -30,7 +28,7 @@ const TableBody = props => {
     return <tbody>{rows}</tbody>;
 }
 
-class Table extends Component {
+class Calculator extends Component {
     render() {
         const { characterData, removeCharacter } = this.props;
 
@@ -43,4 +41,4 @@ class Table extends Component {
     }
 }
 
-export default Table;
+export default Calculator;

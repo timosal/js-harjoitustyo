@@ -3,15 +3,20 @@ import React, {Component} from 'react';
 class Form extends Component {
     constructor(props) {
         super(props);
-        
+
         this.initialState = {
             company: '',
             paydate: '',
-            amount: ''
+            amount: '',
+            payer: 'Person 1',
+            count: 0,
+            debt1: 0,
+            debt2: 0
         };
 
         this.state = this.initialState;
     }
+
 
     handleChange = event => {
         const { name, value } = event.target;
@@ -21,11 +26,26 @@ class Form extends Component {
         });
     }
 
+    removeCharacter = index => {
+        const { characters } = this.state;
+        this.setState({
+            count: this.state.count - 1,
+            characters: characters.filter((character, i) => { 
+                return i !== index;
+            
+            })
+            
+        });
+       
+    }
+
+
     onFormSubmit = (event) => {
         event.preventDefault();
         
         this.props.handleSubmit(this.state);
         this.setState(this.initialState);
+        this.setState({count: this.state.count + 1 });
     }
 
     render() {
@@ -39,7 +59,7 @@ class Form extends Component {
                     name="company" 
                     value={company} 
                     onChange={this.handleChange} />
-                <label>paydate</label>
+                <label>Payment Date</label>
                 <input 
                     type="date" 
                     name="paydate" 
@@ -51,11 +71,23 @@ class Form extends Component {
                     name="amount" 
                     value={amount} 
                     onChange={this.handleChange} />
-                    
+                <label>Payer</label>
+                {/*<input 
+                    type="number" 
+                    name="amount" 
+                    value={amount} 
+                onChange={this.handleChange} />  */}
+                <select name="payer" value={this.state.value} onChange={this.handleChange} >
+                    <option value="Person 1" >Person 1</option>
+                    <option value="Person 2" >Person 2</option>
+                </select>
                 <button type="submit">
                     Submit
                 </button>
+                <h3>How Many Bills In Total: {this.state.count} </h3>    
+                
             </form>
+            
         );
     }
 }

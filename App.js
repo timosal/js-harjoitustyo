@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Table from './Table';
 import Form from './Form';
+import Calculator from './Calculator';
 
 class App extends Component {
     state = {
@@ -9,11 +10,12 @@ class App extends Component {
 
     removeCharacter = index => {
         const { characters } = this.state;
-    
         this.setState({
+            
             characters: characters.filter((character, i) => { 
                 return i !== index;
             })
+            
         });
     }
 
@@ -32,11 +34,18 @@ class App extends Component {
                     characterData={characters}
                     removeCharacter={this.removeCharacter}
                 />
-                <h3>Add New Bill</h3>
-                <Form handleSubmit={this.handleSubmit} />
+                <h3>Add New Bill</h3> 
+                <Form handleSubmit={this.handleSubmit} />       
+                <Calculator
+                    characterData={characters}
+                    removeCharacter={this.removeCharacter}
+                    />
+                
             </div>
+            
         );
     }
+    
 }
 
 export default App;
