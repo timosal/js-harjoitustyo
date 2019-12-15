@@ -30,7 +30,7 @@ class Form extends Component {
     }
 
     render() {
-        const { company, paydate, amount, payer } = this.state; 
+        const { company, paydate, amount } = this.state; 
 
         return (
             <form onSubmit={this.onFormSubmit}>
