@@ -8,7 +8,7 @@ class Form extends Component {
             company: '',
             paydate: '',
             amount: '',
-            payer: ''
+            payer: 'Person 1'
         };
 
         this.state = this.initialState;
