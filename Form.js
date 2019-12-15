@@ -8,11 +8,15 @@ class Form extends Component {
             company: '',
             paydate: '',
             amount: '',
-            payer: 'Person 1'
+            payer: 'Person 1',
+            count: 0,
+            debt1: 0,
+            debt2: 0
         };
 
         this.state = this.initialState;
     }
+
 
     handleChange = event => {
         const { name, value } = event.target;
@@ -22,11 +26,26 @@ class Form extends Component {
         });
     }
 
+    removeCharacter = index => {
+        const { characters } = this.state;
+        this.setState({
+            count: this.state.count - 1,
+            characters: characters.filter((character, i) => { 
+                return i !== index;
+            
+            })
+            
+        });
+       
+    }
+
+
     onFormSubmit = (event) => {
         event.preventDefault();
         
         this.props.handleSubmit(this.state);
         this.setState(this.initialState);
+        this.setState({count: this.state.count + 1 });
     }
 
     render() {
@@ -62,12 +81,13 @@ class Form extends Component {
                     <option value="Person 1" >Person 1</option>
                     <option value="Person 2" >Person 2</option>
                 </select>
-
-                    
                 <button type="submit">
                     Submit
                 </button>
+                <h3>How Many Bills In Total: {this.state.count} </h3>    
+                
             </form>
+            
         );
     }
 }
