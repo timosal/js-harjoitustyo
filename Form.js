@@ -3,11 +3,12 @@ import React, {Component} from 'react';
 class Form extends Component {
     constructor(props) {
         super(props);
-        
+
         this.initialState = {
             company: '',
             paydate: '',
-            amount: ''
+            amount: '',
+            payer: ''
         };
 
         this.state = this.initialState;
@@ -29,7 +30,7 @@ class Form extends Component {
     }
 
     render() {
-        const { company, paydate, amount } = this.state; 
+        const { company, paydate, amount, payer } = this.state; 
 
         return (
             <form onSubmit={this.onFormSubmit}>
@@ -39,7 +40,7 @@ class Form extends Component {
                     name="company" 
                     value={company} 
                     onChange={this.handleChange} />
-                <label>paydate</label>
+                <label>Payment Date</label>
                 <input 
                     type="date" 
                     name="paydate" 
@@ -51,6 +52,17 @@ class Form extends Component {
                     name="amount" 
                     value={amount} 
                     onChange={this.handleChange} />
+                <label>Payer</label>
+                {/*<input 
+                    type="number" 
+                    name="amount" 
+                    value={amount} 
+                onChange={this.handleChange} />  */}
+                <select name="payer" value={this.state.value} onChange={this.handleChange} >
+                    <option value="Person 1" >Person 1</option>
+                    <option value="Person 2" >Person 2</option>
+                </select>
+
                     
                 <button type="submit">
                     Submit
