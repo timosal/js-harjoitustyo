@@ -20,7 +20,7 @@ const TableBody = props => {
                 <td>{row.company}</td>
                 <td>{row.paydate}</td>
                 <td>{row.amount}</td>
-                <td><button onClick={() => props.removeCharacter(index)}>Delete</button></td>
+                <td><button onClick={() => { if (window.confirm('Are you sure you wish to delete this bill?')) props.removeCharacter(index) } }>Delete</button></td>
             </tr>
         );
     });
