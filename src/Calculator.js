@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 const TableHeader = () => { 
     return (
@@ -15,17 +15,19 @@ const TableHeader = () => {
 
 const TableBody = props => { 
     
-    const rows = props.characterData.map((row, index) => {
         return (
-            
-            <tr key={index}>
-                <td>{row.amount}</td>
-                <td>{row.payer}</td>               
+           <Fragment>
+            <tr>
+                <td>$0</td>
+                <td>Person 1</td>               
             </tr>
+            <tr>
+            <td>$0</td>
+            <td>Person 2</td>               
+        </tr>
+        </Fragment> 
         );
-    });
-
-    return <tbody>{rows}</tbody>;
+    
 }
 
 class Calculator extends Component {
