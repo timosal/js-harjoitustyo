@@ -7,7 +7,7 @@ class Form extends Component {
         this.initialState = {
             company: '',
             paydate: '',
-            amount: '',
+            amount: 0,
             payer: 'Person 1',
             count: 0,
             debt1: 0,
@@ -45,7 +45,10 @@ class Form extends Component {
         
         this.props.handleSubmit(this.state);
         this.setState(this.initialState);
+        var memeCalc = parseFloat(this.state.amount);
+        this.setState({debt1: this.state.debt1 + memeCalc});
         this.setState({count: this.state.count + 1 });
+        
     }
 
     render() {
